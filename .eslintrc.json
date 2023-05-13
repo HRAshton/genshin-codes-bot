@@ -1,0 +1,32 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "googleappsscript/googleappsscript": true
+  },
+  "extends": "airbnb-base",
+  "overrides": [
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "class-methods-use-this": "off"
+  },
+  "plugins": [
+    "googleappsscript"
+  ],
+  "globals": {
+    "GenshinCodesBot": "readonly",
+    "HoyolabApiClient": "readonly",
+    "SpreadsheetClient": "readonly",
+    "TelegramClient": "readonly",
+    "getConfig": "readonly",
+    "runWithRetries": "readonly",
+    "shannonEntropy": "readonly",
+    "unique": "readonly",
+    "main": "readonly"
+  }
+}
