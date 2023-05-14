@@ -10,7 +10,7 @@ function getConfig() {
 
     retryPatternMs: [1000, 2000, 5000],
 
-    botApiKey: '6232337916:AAG_XOMJeStwLsLA3uUaMXIZpFb2mkeM7Rg',
+    botApiKey: '',
     channelId: '@genshin_impact_promo_codes',
   };
 }
