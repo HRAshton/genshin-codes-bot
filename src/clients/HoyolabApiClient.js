@@ -1,16 +1,16 @@
 // eslint-disable-next-line no-unused-vars
 class HoyolabApiClient {
   /**
-   * Returns codes and potential codes.
+   * Returns codes and possible codes.
    * @returns { Codes }
    */
   fetchCodes() {
     const searchResult = this._fetchSearchResult();
 
     const codes = this._getCodes(searchResult);
-    const potentialCodes = this._getPotentialCodes(searchResult);
+    const possibleCodes = this._getPossibleCodes(searchResult);
 
-    const result = { codes, potentialCodes };
+    const result = { codes, possibleCodes };
     console.log('HoyolabApiClient', 'Codes found', result);
 
     return result;
@@ -46,20 +46,20 @@ class HoyolabApiClient {
   }
 
   /**
-   * Returns a list of potential codes.
-   * A potential code is a substring longer than 7 characters,
+   * Returns a list of possible codes.
+   * A possible code is a substring longer than 7 characters,
    * consisting of uppercase letters or digits.
    * @param {string} searchResult
    * @returns {string[]} */
-  _getPotentialCodes(searchResult) {
+  _getPossibleCodes(searchResult) {
     const regex = /[A-Z0-9]{8,}/g;
     const regexResult = searchResult.match(regex);
-    console.log('HoyolabApiClient', 'Potential codes', 'Substrings', regexResult);
+    console.log('HoyolabApiClient', 'Possible codes', 'Substrings', regexResult);
 
     const uppercaseRegex = /[A-Z]+/;
-    const potentialCodes = regexResult.filter((str) => uppercaseRegex.exec(str));
-    console.log('HoyolabApiClient', 'Potential codes', 'Result', potentialCodes);
+    const possibleCodes = regexResult.filter((str) => uppercaseRegex.exec(str));
+    console.log('HoyolabApiClient', 'Possible codes', 'Result', possibleCodes);
 
-    return potentialCodes;
+    return possibleCodes;
   }
 }
