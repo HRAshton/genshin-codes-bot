@@ -27,8 +27,8 @@ class SpreadsheetClient {
     const addedAtStr = new Date().toISOString();
 
     const codesCells = codes.codes.map((str) => [str, addedAtStr, 'NORMAL']);
-    const potentialCodesCells = codes.potentialCodes.map((str) => [str, addedAtStr, 'POTENCIAL']);
-    const cellsToInsert = [...codesCells, ...potentialCodesCells];
+    const possibleCodesCells = codes.possibleCodes.map((str) => [str, addedAtStr, 'POTENCIAL']);
+    const cellsToInsert = [...codesCells, ...possibleCodesCells];
 
     const lastRow = this._sheet.getLastRow();
     const range = this._sheet.getRange(

@@ -1,7 +1,7 @@
 /**
  * @typedef { {
  *     codes: string[];
- *     potentialCodes: string[];
+ *     possibleCodes: string[];
  *     found: Boolean;
  * } } Codes
  */
