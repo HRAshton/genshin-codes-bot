@@ -30,13 +30,13 @@ class GenshinCodesBot {
     const knownCodes = this._spreadsheetClient.fetchKnownCodes();
 
     const codes = unique(rawCodes.codes.filter((code) => !knownCodes.has(code)));
-    const potentialCodes = unique(rawCodes.potentialCodes
+    const possibleCodes = unique(rawCodes.possibleCodes
       .filter((code) => !knownCodes.has(code))
       .filter((code) => !rawCodes.codes.includes(code)));
     const newCodes = {
       codes,
-      potentialCodes,
-      found: codes.length > 0 || potentialCodes.length > 0,
+      possibleCodes,
+      found: codes.length > 0 || possibleCodes.length > 0,
     };
 
     if (newCodes.found) {
@@ -52,9 +52,9 @@ class GenshinCodesBot {
    * @returns { string }
    */
   _buildTelegramMessage(newCodes) {
-    const { codes, potentialCodes } = newCodes;
+    const { codes, possibleCodes } = newCodes;
 
-    if (!newCodes.codes.length && !newCodes.potentialCodes.length) {
+    if (!newCodes.codes.length && !newCodes.possibleCodes.length) {
       throw Error('Empty codes passed.');
     }
 
@@ -70,17 +70,17 @@ class GenshinCodesBot {
       }
     }
 
-    if (potentialCodes.length > 0) {
-      messageLines.push('', '*Potential codes*');
+    if (possibleCodes.length > 0) {
+      messageLines.push('', '*Possible codes*');
       messageLines.push('_These codes are derived automatically, and some of them may not work. '
         + 'Or they may just be nicknames. Or service values. But it\'s worth a try, right?_');
 
       // Codes that have a high probability of being correct should be at the beginning of the list.
-      const sortedPotentialCodes = potentialCodes.sort(
+      const sortedPossibleCodes = possibleCodes.sort(
         (a, b) => this._getProbability(a) - this._getProbability(b),
       );
-      for (let i = 0; i < sortedPotentialCodes.length; i += 1) {
-        const code = sortedPotentialCodes[i];
+      for (let i = 0; i < sortedPossibleCodes.length; i += 1) {
+        const code = sortedPossibleCodes[i];
         const line = `${i + 1}. \`${code}\` [Redeem online](https://genshin.hoyoverse.com/en/gift?code=${code})`;
         messageLines.push(line);
       }
