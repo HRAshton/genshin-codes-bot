@@ -1,0 +1,37 @@
+{
+  "name": "genshin-codes-bot",
+  "version": "1.1.0",
+  "description": "GAS app that resends Genshin Impact promo codes from HoYoLaB to a Telegram channel",
+  "scripts": {
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "pull": "git diff --exit-code && clasp pull",
+    "push": "clasp push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRAshton/genshin-codes-bot.git"
+  },
+  "keywords": [
+    "GAS",
+    "Google",
+    "Apps",
+    "Script",
+    "Genshin",
+    "Impact",
+    "Telegram",
+    "Bot"
+  ],
+  "author": "HRAshton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HRAshton/genshin-codes-bot/issues"
+  },
+  "homepage": "https://github.com/HRAshton/genshin-codes-bot#readme",
+  "devDependencies": {
+    "eslint": "^8.40.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-googleappsscript": "^1.0.4",
+    "eslint-plugin-import": "^2.27.5"
+  }
+}
