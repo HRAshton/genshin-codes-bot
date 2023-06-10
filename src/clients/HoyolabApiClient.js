@@ -39,7 +39,7 @@ class HoyolabApiClient {
   _getCodes(searchResult) {
     const objSearchResult = JSON.parse(searchResult);
     const codes = unique(objSearchResult?.data?.special_cards
-      ?.find(() => true).special?.tool?.detail?.map((card) => card.title) ?? []);
+      ?.find(() => true)?.special?.tool?.detail?.map((card) => card.title) ?? []);
     console.info('HoyolabApiClient', 'Codes found', codes);
 
     return codes;
