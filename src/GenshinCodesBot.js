@@ -2,6 +2,7 @@
 class GenshinCodesBot {
   constructor() {
     this._hoyolabClient = new HoyolabApiClient();
+    this._fandomWikiClient = new FandomWikiClient();
     this._spreadsheetClient = new SpreadsheetClient();
     this._telegramClient = new TelegramClient();
   }
@@ -26,7 +27,7 @@ class GenshinCodesBot {
    * @returns { Codes }
    */
   _getAndRegisterNewCodes() {
-    const rawCodes = this._hoyolabClient.fetchCodes();
+    const rawCodes = this._fetchCodes();
     const knownCodes = this._spreadsheetClient.fetchKnownCodes();
 
     const codes = unique(rawCodes.codes.filter((code) => !knownCodes.has(code)));
@@ -44,6 +45,24 @@ class GenshinCodesBot {
     }
 
     return newCodes;
+  }
+
+  /**
+   * Gets new codes from the clients.
+   * @returns { FetchedCodes }
+   */
+  _fetchCodes() {
+    const hoyolabCodes = this._hoyolabClient.fetchCodes();
+    const fandomWikiCodes = this._fandomWikiClient.fetchCodes();
+
+    const merged = {
+      codes: unique([...hoyolabCodes.codes, ...fandomWikiCodes.codes]),
+      possibleCodes: unique([...hoyolabCodes.possibleCodes, ...fandomWikiCodes.possibleCodes]),
+    };
+
+    console.info('GenshinCodesBot', '_fetchCodes', 'Merged codes', merged);
+
+    return merged;
   }
 
   /**
