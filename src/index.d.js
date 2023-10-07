@@ -8,6 +8,13 @@
 
 /**
  * @typedef { {
+ *     codes: string[];
+ *     potentialCodes: string[];
+ * } } FetchedCodes
+ */
+
+/**
+ * @typedef { {
  *  spreadsheetId: string;
  *  sheetName: string;
  *  retryPatternMs: number[];

@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 class TelegramClient {
   /**
-   * Sends a message to the predifined channel.
+   * Sends a message to the predefined channel.
    * @param { string } body
    */
   sendMessageToChannel(body) {

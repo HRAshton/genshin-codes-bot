@@ -2,7 +2,7 @@
 class HoyolabApiClient {
   /**
    * Returns codes and possible codes.
-   * @returns { Codes }
+   * @returns { FetchedCodes }
    */
   fetchCodes() {
     const searchResult = this._fetchSearchResult();
@@ -34,8 +34,8 @@ class HoyolabApiClient {
 
   /**
    * Returns a list of codes.
-   * @param {string} searchResult
-   * @returns {string[]} */
+   * @param { string } searchResult
+   * @returns { string[] } */
   _getCodes(searchResult) {
     const objSearchResult = JSON.parse(searchResult);
     const codes = unique(objSearchResult?.data?.special_cards
@@ -49,8 +49,8 @@ class HoyolabApiClient {
    * Returns a list of possible codes.
    * A possible code is a substring longer than 7 characters,
    * consisting of uppercase letters or digits.
-   * @param {string} searchResult
-   * @returns {string[]} */
+   * @param { string } searchResult
+   * @returns { string[] } */
   _getPossibleCodes(searchResult) {
     const regex = /[A-Z0-9]{8,}/g;
     const regexResult = searchResult.match(regex);
