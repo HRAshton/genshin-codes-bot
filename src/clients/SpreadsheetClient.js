@@ -8,7 +8,7 @@ class SpreadsheetClient {
 
   /**
    * Returns set of known codes.
-   * @returns {Set<string>}
+   * @returns { Set<string> }
    */
   fetchKnownCodes() {
     const lastRow = this._sheet.getLastRow();
