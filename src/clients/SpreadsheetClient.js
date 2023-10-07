@@ -15,6 +15,7 @@ class SpreadsheetClient {
     const values = this._sheet.getRange(2, 1, lastRow).getValues();
     const codesList = values.map((row) => row[0]);
     const codesSet = new Set(codesList);
+    console.log('SpreadsheetClient', 'Known codes', codesSet);
 
     return codesSet;
   }
