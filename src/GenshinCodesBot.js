@@ -84,7 +84,7 @@ class GenshinCodesBot {
 
       for (let i = 0; i < codes.length; i += 1) {
         const code = codes[i];
-        const line = `${i + 1}. \`${code}\` [Redeem online](https://genshin.hoyoverse.com/en/gift?code=${code})`;
+        const line = `${i + 1}. \`${code}\` [Redeem online](https://hsr.hoyoverse.com/gift?code=${code})`;
         messageLines.push(line);
       }
     }
@@ -100,7 +100,7 @@ class GenshinCodesBot {
       );
       for (let i = 0; i < sortedPossibleCodes.length; i += 1) {
         const code = sortedPossibleCodes[i];
-        const line = `${i + 1}. \`${code}\` [Redeem online](https://genshin.hoyoverse.com/en/gift?code=${code})`;
+        const line = `${i + 1}. \`${code}\` [Redeem online](https://hsr.hoyoverse.com/gift?code=${code})`;
         messageLines.push(line);
       }
     }

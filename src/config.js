@@ -5,12 +5,12 @@
 // eslint-disable-next-line no-unused-vars
 function getConfig() {
   return {
-    spreadsheetId: '1xUsoMK-5t7mgJnc79abSaMDdWhPl2P35z9Dv04eymNM',
+    spreadsheetId: '',
     sheetName: 'main',
 
     retryPatternMs: [1000, 2000, 5000],
 
     botApiKey: '',
-    channelId: '@genshin_impact_promo_codes',
+    channelId: '@honkai_starrail_promo_codes',
   };
 }
