@@ -14,7 +14,7 @@ class FandomWikiClient {
   }
 
   _fetchPageContent() {
-    const rawResponse = UrlFetchApp.fetch('https://genshin-impact.fandom.com/wiki/Promotional_Code');
+    const rawResponse = UrlFetchApp.fetch('https://honkai-star-rail.fandom.com/wiki/Redemption_Code');
     const rawHtml = rawResponse.getContentText();
     console.log('FandomWikiClient', 'Page content', rawHtml);
 
@@ -27,7 +27,7 @@ class FandomWikiClient {
    * @param { string } rawHtml
    * @returns { FetchedCodes } */
   _getCodes(rawHtml) {
-    const codeRegex = /https:\/\/genshin\.hoyoverse\.com\/en\/gift\?code=([A-Z0-9]{5,})/g;
+    const codeRegex = /https:\/\/hsr\.hoyoverse\.com\/gift\?code=([A-Z0-9]{5,})/g;
     const rowRegex = /<tr(.*?)tr>/gi;
 
     const flattenHtml = rawHtml.replaceAll(/\s/g, '');

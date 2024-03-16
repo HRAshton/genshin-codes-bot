@@ -26,7 +26,7 @@ class HoyolabApiClient {
       },
     };
 
-    const rawResponse = UrlFetchApp.fetch('https://bbs-api-os.hoyolab.com/community/painter/wapi/search?game_id=2&keyword=Redeem Code', options);
+    const rawResponse = UrlFetchApp.fetch('https://bbs-api-os.hoyolab.com/community/painter/wapi/search?game_id=6&keyword=Redeem Code', options);
     const jsonResponse = rawResponse.getContentText();
     console.log('HoyolabApiClient', 'Search result', jsonResponse);
 
