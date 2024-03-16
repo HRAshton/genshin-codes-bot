@@ -14,7 +14,7 @@ class FandomWikiClient {
   }
 
   _fetchPageContent() {
-    const rawResponse = UrlFetchApp.fetch('https://genshin-impact.fandom.com/wiki/Promotional_Code');
+    const rawResponse = UrlFetchApp.fetch('https://honkaiimpact3.fandom.com/wiki/Exchange_Rewards');
     const rawHtml = rawResponse.getContentText();
     console.log('FandomWikiClient', 'Page content', rawHtml);
 
@@ -27,19 +27,14 @@ class FandomWikiClient {
    * @param { string } rawHtml
    * @returns { FetchedCodes } */
   _getCodes(rawHtml) {
-    const codeRegex = /https:\/\/genshin\.hoyoverse\.com\/en\/gift\?code=([A-Z0-9]{5,})/g;
-    const rowRegex = /<tr(.*?)tr>/gi;
+    const codeRegex = /<tr>\s*<td>\s*<b>([A-Z0-9]+)<\/b>/g;
 
     const flattenHtml = rawHtml.replaceAll(/\s/g, '');
-    const tableRowParts = this._matchAllAsStrings(flattenHtml, rowRegex);
-    const codesPerRow = tableRowParts.map(htmlPart => this._matchAllAsStrings(htmlPart, codeRegex));
-
-    const codes = codesPerRow.flatMap(x => x.slice(0, 1));
-    const possibleCodes = codesPerRow.flatMap(x => x.slice(1));
+    const codesPerRow = this._matchAllAsStrings(flattenHtml, codeRegex);
 
     return {
-      codes,
-      possibleCodes,
+      codes: codesPerRow,
+      possibleCodes: [],
     };
   }
 
